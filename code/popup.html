@@ -152,6 +152,8 @@
     padding-left: 2px;
     text-decoration: none;
     transition: all 0.5s ease;
+    display: flex;
+    flex-flow: wrap;
 
   }
   .classcontainer a:visited {
@@ -178,6 +180,18 @@
     padding: 2px;
     padding-left: 30px;
     float: left;
+    word-break: break-all;
+  }
+
+  .values {
+    max-width: 100px;
+    height: 50px;
+    font-size: 10px;
+    background-color: #aaaaaa;
+    font-color: black;
+    padding-left: 35px;
+    word-break: break-all;
+    display: inline;
   }
 
 </style>
@@ -210,16 +224,26 @@
       
 
       <div class="classcontainer">
-        <p id="coursecode"><b>COURSE CODE:</b> CSCI1300</p>
+        <p><b>COURSE CODE:</b></p>
+        <div class="values" id="coursecode">fuckfiuhck wkjhwkjh lwhelkeh lwkhrkh wlkrljwlekrj welkrj</div>
+        
+        
         <div class="bar"></div>
-        <p id=classname><b>CLASS NAME:</b> <br></p>
+        <p><b>CLASS NAME:</b></p>
+        <div class="values" id="classname">N/A</div>
+        
         <div class="bar"></div>
-        <p id="classsize"><b>TOTAL CLASS SIZE:</b>blah</p>
+        
+        <p><b>TOTAL CLASS SIZE:</b></p>
+        <div class="values" id="classsize">N/A</div>
+        
         <div class="bar"></div>
-        <p id="avail"><b>SEATS AVAILABLE:</b>blah</p>
+        
+        <p><b>SEATS AVAILABLE:</b></p>
+        <div class="values" id="classavail">N/A</div>
 
-
-        <p><b><i class="fa fa-exclamation-circle" aria-hidden="true"></i> CLASS REQUIRES OVERRIDE</b></p>
+<!-- 
+        <p><b><i class="fa fa-exclamation-circle" aria-hidden="true"></i> CLASS REQUIRES OVERRIDE</b></p> -->
 
         <button><a href="https://cab.brown.edu/" target="_blank">REGISTER FOR COURSE</a></button>
 
