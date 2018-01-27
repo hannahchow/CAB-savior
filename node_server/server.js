@@ -71,6 +71,11 @@ var server = http.createServer(function(req, res) {
 
 			// The whole response has been received.
 			resp.on('end', () => {
+				// These lines allow Cross-Origin Resource Sharing (CORS).
+				res.setHeader('Access-Control-Allow-Origin', '*');
+				res.setHeader('Access-Control-Request-Method', '*');
+				res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET');
+				res.setHeader('Access-Control-Allow-Headers', '*');
 				// Success.
 				res.writeHead(200);
 
@@ -79,9 +84,12 @@ var server = http.createServer(function(req, res) {
 				if(parsed['error'] != null) {
 					returnData['error'] = "Course not found";
 				} else {
+					// Adds basic course data to the JSON object.
 					returnData['title'] = parsed.course.title;
 					returnData['code'] = parsed.course.code;
 					returnData['sections'] = [];
+					
+					// Adds each section if it isn't cancelled.
 					parsed.sections.forEach(function(section, i){
 						if(!section.cncld) {
 							returnData['sections'][i] = {};
