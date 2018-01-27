@@ -48,6 +48,16 @@ var server = http.createServer(function(req, res) {
 	for (const [name, value] of params) {
 	  if(name == "course_code") {
 	  	code = value;
+	  	// Adds a space if one is not inserted (assumes no course code numbers begin with letters).
+	  	if(code.indexOf(" ") == -1) {
+	  		for(var i = 0; i < code.length; i++) {
+	  			// Searches up to first numeric character.
+	  			if(!isNaN(parseInt(code[i]))) {
+  					code = code.substr(0, i) + " " + code.substr(i);
+	  				break;
+	  			}
+	  		}
+	  	}
 	  }
 	}
 
@@ -88,7 +98,7 @@ var server = http.createServer(function(req, res) {
 					returnData['title'] = parsed.course.title;
 					returnData['code'] = parsed.course.code;
 					returnData['sections'] = [];
-					
+
 					// Adds each section if it isn't cancelled.
 					parsed.sections.forEach(function(section, i){
 						if(!section.cncld) {
