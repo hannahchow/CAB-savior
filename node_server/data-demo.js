@@ -35,7 +35,7 @@ var server = http.createServer(function(req, res) {
 		res.writeHead(400);
 		res.end("Error: course code not supplied!");
 	} else {
-		https.get('https://cab.brown.edu/asoc-api/?output=json&page=asoc.rjs&route=course&term=201720&course=CSCI%200160', (resp) => {
+		https.get('https://cab.brown.edu/asoc-api/?output=json&page=asoc.rjs&route=course&term=201720&course=' + code, (resp) => {
 			let data = '';
 
 			// A chunk of data has been recieved.
@@ -47,7 +47,11 @@ var server = http.createServer(function(req, res) {
 			resp.on('end', () => {
 				var parsed = JSON.parse(data);
 				res.writeHead(200);
-				res.end("Title: " + parsed.course.title);
+				if(parsed['error'] != null) {
+					res.end("Error: course not found!");
+				} else {
+					res.end("Title: " + parsed.course.title);
+				}
 			});
 
 		}).on("error", (err) => {
