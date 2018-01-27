@@ -1,3 +1,23 @@
+send_email => {
+	var email = require("emailjs");
+
+	var server = email.server.connect({
+	   user:    "cabsavior@gmail.com", 
+	   password:"Graduate20", 
+	   host:    "smtp.gmail.com", 
+	   ssl:     true
+	});
+
+	// send the message and get a callback with an error or details of the message that was sent
+	server.send({
+	   text:    "i hope this works", 
+	   from:    "CAB Savior <cabsavior@gmail.com>", 
+	   to:      "Hannah <hannah_chow@brown.edu>",
+	   cc:      "else <else@your-email.com>",
+	   subject: "testing emailjs"
+	}, function(err, message) { console.log(err || message); });
+}
+
 var http = require('http');
 var https = require('https');
 const { URL, URLSearchParams } = require('url');
