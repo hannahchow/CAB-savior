@@ -1,0 +1,234 @@
+<!doctype html>
+<!--
+ This page is shown when the extension button is clicked, because the
+ "browser_action" field in manifest.json contains the "default_popup" key with
+ value "popup.html".
+-->
+<html>
+<head>
+  <title>C@B SAVIOUR</title>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style type="text/css">
+ 
+  body {
+    margin: 10px;
+    white-space: nowrap;
+    background-color: #eeece7;
+
+  }
+
+  h1 {
+    font-size: 18px;
+    color: #941e1c;
+  }
+
+  .box {
+    margin-top: 30px;
+    box-sizing: border-box;
+    width: 100%;
+    height: 30%;
+    border: 12px solid #691110;
+    background-color: white;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-weight: bolder;
+
+  }
+
+  #container {
+    overflow: hidden;
+    width: 250px;
+    height: 320px;
+    
+    display: flex;
+    justify-content: flex-start;
+    background-color: #941e1c;
+    /* border: 2px solid #941e1c;*/
+    margin: 10% auto;
+    padding: 20px;
+    overflow: auto;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+     border-top: 14px solid #691110;
+    border-bottom: 14px solid #691110;
+  }
+
+  .search-container {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    /*margin-top: 20px;*/
+    margin-bottom: 20px;
+    background-color: #941e1c;
+  }
+
+  .search-container input[type=text] {
+    padding: 8px;
+    margin-top: 2px;
+    font-size: 12px;
+    border: none;
+    width: 200px;
+  }
+
+  
+
+  .search-container button {
+    float: right;
+    padding: 6px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    margin-left: 14px;
+    font-weight: bold;
+    background-color: white;
+    color: #941e1c;
+    font-size: 14px;
+    border: none;
+    transition: all 0.5s ease;
+    cursor: pointer;
+  }
+
+  .search-container button:hover {
+    transition: all 0.5s ease;
+    background: #691110;
+    color: white;
+  }
+
+  .classcontainer {
+
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    height: 100%;
+  }
+
+  .bar { 
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    height: 2px;
+    width: 80%;
+    background-color: #aaa699;
+  }
+
+  .classcontainer button {
+    margin-left: 40px;
+    margin-top: 16px;
+    margin-bottom: 10px;
+    
+    box-sizing: border-box;
+    width: 68%;
+    height: 14%;
+    border: 4px solid #691110;
+    background-color: white;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-weight: bolder;
+    transition: all 0.5s ease;
+
+
+  }
+
+  .classcontainer a:link {
+    margin: auto;
+    font-size: 12px;
+    color: #941e1c;
+    font-weight: bolder;
+    padding-top: 12px;
+     padding-bottom: 12px;
+    text-decoration: none;
+     transition: all 0.5s ease;
+
+  }
+  .classcontainer a:visited {
+    text-decoration: none;
+    color: #941e1c;
+    transition: all 0.5s ease;
+  }
+
+  .classcontainer button:hover {
+    transition: all 0.5s ease;
+    background: #691110;
+    color: white;
+
+
+  }
+
+  .classcontainer a:hover {
+    transition: all 0.5s ease;
+    color: white;
+  }
+
+  p {
+    margin: 5px;
+    padding: 2px;
+    padding-left: 30px;
+    float: left;
+  }
+
+</style>
+
+    <!--
+      - JavaScript and HTML must be in separate files: see our Content Security
+      - Policy documentation[1] for details and explanation.
+      -
+      - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
+    -->
+    <script src="popup.js"></script>
+  </head>
+
+  <body>
+    <div class="box"><h1>C@B TRACKER</h1></div>
+    <div class="search-container">
+        <div class="othercontainer">
+      
+        <!-- <form action="/action_page.php"> -->
+          <button type="submit">GO</button>
+          <input type="text" placeholder="Input course code (ex: CSCI0150)" name="search">
+          
+        <!-- </form> -->
+      </div>
+      </div>
+    <div id="container">
+      <!-- <span>search for a course</span> -->
+
+      
+
+      <div class="classcontainer">
+        <p><b>COURSE CODE:</b> CSCI1300</p>
+        <div class="bar"></div>
+        <p><b>CLASS NAME:</b> <br>User Interfaces + Experience</p>
+        <div class="bar"></div>
+        <p><b>TOTAL CLASS SIZE:</b> 50</p>
+        <div class="bar"></div>
+        <p><b>SEATS AVAILABLE:</b> 2</p>
+        <div class="bar"></div>
+
+       <p><b><i class="fa fa-exclamation-circle" aria-hidden="true"></i> CLASS REQUIRES OVERRIDE</b></p>
+
+        <button><a href="https://cab.brown.edu/" target="_blank">REGISTER FOR COURSE</a></button>
+
+      </div>
+      <!-- <select id="dropdown">
+        <option selected disabled hidden value=''></option>
+        <option value="white">White</option>
+        <option value="pink">Pink</option>
+        <option value="green">Green</option>
+        <option value="yellow">Yellow</option>
+      </select> -->
+    </div>
+  </body>
+  </html>
