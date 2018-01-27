@@ -34,10 +34,14 @@ var server = http.createServer(function(req, res) {
 	  }
 	}
 
+	// The JSON data returned by the server.
+	var returnData = {};
+
 	// Error if no course code.
 	if(code == "") {
 		res.writeHead(400);
-		res.end("Error: course code not supplied!");
+		returnData['error'] = "Course code not supplied";
+		res.end(JSON.stringify(returnData));
 	} else {
 		// Gets data from that course code!
 		https.get('https://cab.brown.edu/asoc-api/?output=json&page=asoc.rjs&route=course&term=201720&course=' + code, (resp) => {
@@ -56,10 +60,11 @@ var server = http.createServer(function(req, res) {
 				var parsed = JSON.parse(data);
 				// Checks if API returned error.
 				if(parsed['error'] != null) {
-					res.end("Error: course not found!");
+					returnData['error'] = "Course not found";
 				} else {
-					res.end("Title: " + parsed.course.title);
+					returnData['title'] = parsed.course.title;
 				}
+				res.end(JSON.stringify(returnData));
 			});
 
 		}).on("error", (err) => {
