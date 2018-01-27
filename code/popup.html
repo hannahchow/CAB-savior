@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <!--
  This page is shown when the extension button is clicked, because the
  "browser_action" field in manifest.json contains the "default_popup" key with
@@ -7,9 +7,9 @@
 <html>
 <head>
   <title>C@B SAVIOR</title>
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <style type="text/css">
- 
+
   body {
     margin: 10px;
     white-space: nowrap;
@@ -52,7 +52,7 @@
     overflow: auto;
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
-     border-top: 14px solid #691110;
+    border-top: 14px solid #691110;
     border-bottom: 14px solid #691110;
   }
 
@@ -148,10 +148,10 @@
     color: #941e1c;
     font-weight: bold;
     padding-top: 12px;
-     padding-bottom: 12px;
-     padding-left: 2px;
+    padding-bottom: 12px;
+    padding-left: 2px;
     text-decoration: none;
-     transition: all 0.5s ease;
+    transition: all 0.5s ease;
 
   }
   .classcontainer a:visited {
@@ -189,20 +189,21 @@
       - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
     -->
     <script src="popup.js"></script>
+    <script src="search.js"></script>
   </head>
 
   <body>
     <div class="box"><h1>C@B SAVIOR</h1></div>
     <div class="search-container">
-        <div class="othercontainer">
-      
-        <!-- <form action="/action_page.php"> -->
-          <button type="submit">GO</button>
-          <input type="text" placeholder="Input course code (ex: CSCI0150)" name="search">
+      <div class="othercontainer">
+
+        <form id="course-finder">
+          <input id="search" type="text" placeholder="Input course code (ex: CSCI0150)" name="search">
+          <button type="submit" value="Submit">GO</button>
           
-        <!-- </form> -->
+        </form>
       </div>
-      </div>
+    </div>
     <div id="container">
       <!-- <span>search for a course</span> -->
 
@@ -211,14 +212,14 @@
       <div class="classcontainer">
         <p><b>COURSE CODE:</b> CSCI1300</p>
         <div class="bar"></div>
-        <p><b>CLASS NAME:</b> <br>value="title"</p>
+        <p><b>CLASS NAME:</b> <br>blah</p>
         <div class="bar"></div>
-        <p><b>TOTAL CLASS SIZE:</b> value="capacity"</p>
+        <p><b>TOTAL CLASS SIZE:</b>blah</p>
         <div class="bar"></div>
-        <p><b>SEATS AVAILABLE:</b> value="avail"</p>
-      
+        <p><b>SEATS AVAILABLE:</b>blah</p>
 
-       <p><b><i class="fa fa-exclamation-circle" aria-hidden="true"></i> CLASS REQUIRES OVERRIDE</b></p>
+
+        <p><b><i class="fa fa-exclamation-circle" aria-hidden="true"></i> CLASS REQUIRES OVERRIDE</b></p>
 
         <button><a href="https://cab.brown.edu/" target="_blank">REGISTER FOR COURSE</a></button>
 
