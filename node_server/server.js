@@ -22,6 +22,22 @@ send_email => {
 	}, function(err, message) { console.log(err || message); });
 }
 
+get_term_code => {
+	var code = "";
+	var time = new Date();
+	if (time.getMonth() == 11 && time.getDate() > 15) {
+		code += time.getYear().toString() + "15";
+	} else if (time.getMonth() < 4) {
+		code += (time.getYear()-1).toString() + "20";
+	} else if (time.getMonth() < 7 && time.getMonth() >= 4) {
+		code += time.getYear().toString() + "00";
+	} else if (time.getMonth() >= 7) {
+		code += time.getYear().toString() + "10";
+	}
+
+	return code;
+}
+
 // Sets up the node server.
 var server = http.createServer(function(req, res) {
 	// Gets parameters from url and checks if there is one for course code.
@@ -63,6 +79,15 @@ var server = http.createServer(function(req, res) {
 					returnData['error'] = "Course not found";
 				} else {
 					returnData['title'] = parsed.course.title;
+					returnData['sections'] = [];
+					parsed.sections.forEach(function(section, i){
+						if(!section.cncld) {
+							returnData['sections'][i] = {};
+							returnData['sections'][i]['no'] = section.no;
+							returnData['sections'][i]['capacity'] = section.capacity;
+							returnData['sections'][i]['avail'] = section.avail;
+						}
+					});
 				}
 				res.end(JSON.stringify(returnData));
 			});
