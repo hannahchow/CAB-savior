@@ -100,11 +100,12 @@
   }
 
   .classcontainer {
+
     background-color: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     width: 100%;
     height: 100%;
   }
@@ -121,7 +122,9 @@
   }
 
   .classcontainer button {
-    margin-top: 20px;
+    margin-left: 40px;
+    margin-top: 16px;
+    margin-bottom: 10px;
     
     box-sizing: border-box;
     width: 68%;
@@ -169,6 +172,13 @@
     color: white;
   }
 
+  p {
+    margin: 5px;
+    padding: 2px;
+    padding-left: 30px;
+    float: left;
+  }
+
 </style>
 
     <!--
@@ -187,7 +197,7 @@
       
         <!-- <form action="/action_page.php"> -->
           <button type="submit">GO</button>
-          <input type="text" placeholder="input course code..." name="search">
+          <input type="text" placeholder="Input course code (ex: CSCI0150)" name="search">
           
         <!-- </form> -->
       </div>
@@ -198,18 +208,18 @@
       
 
       <div class="classcontainer">
-        <p>COURSE CODE: CSCI1300</p>
+        <p><b>COURSE CODE:</b> CSCI1300</p>
         <div class="bar"></div>
-        <p>CLASS NAME: <br>User Interfaces + Experience</p>
+        <p><b>CLASS NAME:</b> <br>User Interfaces + Experience</p>
         <div class="bar"></div>
-        <p>TOTAL CLASS SIZE: 50</p>
+        <p><b>TOTAL CLASS SIZE:</b> 50</p>
         <div class="bar"></div>
-        <p>SPACES AVAILABLE: 2</p>
+        <p><b>SEATS AVAILABLE:</b> 2</p>
         <div class="bar"></div>
 
-       <p><i class="fa fa-exclamation-circle" aria-hidden="true"></i> CLASS REQUIRES OVERRIDE</p>
+       <p><b><i class="fa fa-exclamation-circle" aria-hidden="true"></i> CLASS REQUIRES OVERRIDE</b></p>
 
-        <button><a href="https://cab.brown.edu/" target="_blank">REGISTER FOR COURSE</a>
+        <button><a href="https://cab.brown.edu/" target="_blank">REGISTER FOR COURSE</a></button>
 
       </div>
       <!-- <select id="dropdown">
