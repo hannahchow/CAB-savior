@@ -3,8 +3,10 @@ var https = require('https');
 const { URL, URLSearchParams } = require('url');
 var email = require("emailjs");
 
+var email_addr = "";
+
 // TODO: Fix this send email function.
-function send_email() {
+function send_email(email_addr) {
 	var server = email.server.connect({
 	   user:    "cabsavior@gmail.com", 
 	   password:"Graduate20", 
@@ -16,7 +18,7 @@ function send_email() {
 	server.send({
 	   text:    "i hope this works", 
 	   from:    "CAB Savior <cabsavior@gmail.com>", 
-	   to:      "Hannah <hannah_chow@brown.edu>",
+	   to:      email_addr,
 	   cc:      "else <else@your-email.com>",
 	   subject: "testing emailjs"
 	}, function(err, message) { console.log(err || message); });
@@ -48,16 +50,8 @@ var server = http.createServer(function(req, res) {
 	for (const [name, value] of params) {
 	  if(name == "course_code") {
 	  	code = value;
-	  	// Adds a space if one is not inserted (assumes no course code numbers begin with letters).
-	  	if(code.indexOf(" ") == -1) {
-	  		for(var i = 0; i < code.length; i++) {
-	  			// Searches up to first numeric character.
-	  			if(!isNaN(parseInt(code[i]))) {
-  					code = code.substr(0, i) + " " + code.substr(i);
-	  				break;
-	  			}
-	  		}
-	  	}
+	  } else if(name == "email") {
+	  	email_addr = value;
 	  }
 	}
 
@@ -98,7 +92,7 @@ var server = http.createServer(function(req, res) {
 					returnData['title'] = parsed.course.title;
 					returnData['code'] = parsed.course.code;
 					returnData['sections'] = [];
-
+					
 					// Adds each section if it isn't cancelled.
 					parsed.sections.forEach(function(section, i){
 						if(!section.cncld) {
