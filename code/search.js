@@ -36,6 +36,7 @@ function populate(out) {
          <label>SEATS AVAILABLE:</label>
         <div class="values">${classavail}</div>
       </div>
+      ${section.meet}
       </div>`;
       document.getElementById('sections').innerHTML = document.getElementById('sections').innerHTML + html;
 
