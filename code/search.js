@@ -9,6 +9,7 @@ function populate(class_data) {
 
     // Shows error and hides everything else.
     warning.style.display = "block";
+    document.getElementById("container").style.display = "block";
     warning.children[1].innerHTML = class_data.error;
     Array.from(document.getElementsByClassName("separated")).forEach(function(item) {
       item.style.display = "none";
