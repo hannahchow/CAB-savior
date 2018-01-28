@@ -117,5 +117,10 @@ window.onload = function() {
 
   }
 
-  var email = document.getElementById('email').value;
 }
+
+function getEmail() {
+   var email = document.getElementById('email').value;
+   return email;
+}
+
