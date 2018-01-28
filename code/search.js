@@ -1,15 +1,15 @@
 /**
  * This function propagates the HTML with appropriate information depending on the user's search.
  */
-function populate(out) {
+function populate(class_data) {
 
   var warning = document.getElementById("error");
 
-  if (out.error != null) {
+  if (class_data.error != null) {
 
     // Shows error and hides everything else.
     warning.style.display = "block";
-    warning.children[1].innerHTML = out.error;
+    warning.children[1].innerHTML = class_data.error;
     Array.from(document.getElementsByClassName("separated")).forEach(function(item) {
       item.style.display = "none";
     });
@@ -26,19 +26,19 @@ function populate(out) {
   document.getElementById('sections').innerHTML = "";
 
   // Inserts some data.
-  document.getElementById("coursecode").innerHTML = out.code;
-  document.getElementById("classname").innerHTML = out.title;
+  document.getElementById("coursecode").innerHTML = class_data.code;
+  document.getElementById("classname").innerHTML = class_data.title;
 
   // Shows override warning if appropriate.
   var override = document.getElementById("courseoverride");
-  if (out.overrideRequired == true){
+  if (class_data.overrideRequired == true){
     override.style.display = "block";
   } else {
     override.style.display = "none";
   }
 
   // Makes an HTML block for each section, giving each its appropriate information.
-  out.sections.forEach(function(section){
+  class_data.sections.forEach(function(section){
     var classsize = 0;
     var classavail = 0;
 
@@ -87,9 +87,9 @@ window.onload = function() {
     var url = "http://10.38.58.25:8080/?course_code=" + document.getElementById('search').value;
     fetch(url)
     .then(res => res.json())
-    .then((out) => {
-      populate(out);
-      chrome.storage.sync.set({'classPicked': out}, function() {
+    .then((class_data) => {
+      populate(class_data);
+      chrome.storage.sync.set({'classPicked': class_data}, function() {
         console.log("we saved");
       });
     })
@@ -97,4 +97,8 @@ window.onload = function() {
     return false;
   }
 
+  var close = document.getElementById('course-close');
+  close.onclick = function() {
+    document.getElementById("container").style.display = "none";
+  }
 }
