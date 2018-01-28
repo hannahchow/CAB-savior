@@ -41,7 +41,6 @@
   
 
   #container {
-    display: none;
     width: 300px;
     height: 350px;
     background-color: #941e1c;
@@ -144,6 +143,6 @@
     word-wrap: normal;
   }
 
-  #courseoverride {
-    display: block;
+  #courseoverride, #container {
+    display: none;
   }

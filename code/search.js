@@ -2,9 +2,11 @@ function populate(out) {
   document.getElementById('sections').innerHTML = "";
   document.getElementById("coursecode").innerHTML = out.code;
 
+  var override = document.getElementById("courseoverride");
   if (out.overrideRequired == true){
-    var html = `<i class="fa fa-exclamation-triangle"></i>`;
-    document.getElementById("courseoverride").innerHTML = html + " Instructor override required";
+    override.style.display = "block";
+  } else {
+    override.style.display = "none";
   }
   document.getElementById("classname").innerHTML = out.title;
 
