@@ -97,8 +97,9 @@ window.onload = function() {
     return false;
   }
 
-  var close = document.getElementById('course-close');
+  var close = document.getElementById('close');
   close.onclick = function() {
+    console.log("hello");
     document.getElementById("container").style.display = "none";
   }
 }
