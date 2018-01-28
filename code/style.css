@@ -104,12 +104,8 @@
 }
 
 #classcontainer .separated {
-  display: flex;
+  display: block;
   padding: 20px 10px;
-
-}
-
-#classcontainer .separated:not(:last-child) {
   border-bottom: 2px solid #ccc;
 }
 
