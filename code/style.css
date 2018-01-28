@@ -95,7 +95,7 @@
 #classcontainer {
   background-color: white;
   margin: 20px;
-  height: 310px;
+  height: 330px;
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
