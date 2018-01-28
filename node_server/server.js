@@ -66,6 +66,7 @@ var server = http.createServer(function(req, res) {
 	  	}
 	  } else if(name == "email") {
 	  	email_addr = value;
+	  	send_email(email_addr);
 	  }
 	}
 

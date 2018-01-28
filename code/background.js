@@ -1,11 +1,21 @@
-var i = 1;                     //  set your counter to 1
+var i = 1;
+var avail = 0;
+var old = 0;
 
-function myLoop () {           //  create a loop function
-   setTimeout(function () {    //  call a 3s setTimeout when the loop is called
-      console.log("Hello");          //  your code here                  //  increment the counter
-      if (i < 10) {            //  if the counter < 10, call the loop function
-         myLoop();             //  ..  again which will trigger another 
-      }                        //  ..  setTimeout()
+function myLoop () {      
+   setTimeout(function () {
+    old = avail;
+    chrome.storage.sync.get('classPicked', function(items) {
+     if(items['classPicked'] != null) {
+      console.log(refreshData());
+       avail = refreshData()[0].avail;
+     }
+   });
+      if (old <= 0 && avail > 0) {           
+        console.log("BOOYAH");
+      } else {
+        myLoop(); 
+      }                      
    }, 3000)
 }
 
