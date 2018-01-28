@@ -106,7 +106,7 @@ var server = http.createServer(function(req, res) {
 					returnData['title'] = parsed.course.title;
 					returnData['code'] = parsed.course.code;
 					returnData['sections'] = [];
-					
+					returnData['overrideRequired'] = parsed.course.warns.includes('permission');
 					// Adds each section if it isn't cancelled.
 					parsed.sections.forEach(function(section, i){
 						if(!section.cncld) {
