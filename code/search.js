@@ -74,9 +74,11 @@ function populate(class_data) {
  }
 }
 
-function refreshData() {
-  var url = "http://10.38.58.25:8080/?course_code=" + document.getElementById('search').value;
-  fetch(url)
+var class_data;
+
+function refreshData(code) {
+  var url = "http://10.38.58.25:8080/?course_code=" + code;
+  return fetch(url)
   .then(res => res.json())
   .then((class_data) => {
     populate(class_data);
@@ -84,11 +86,10 @@ function refreshData() {
     return class_data.sections;
   })
   .catch(err => { throw err });
-  return false;
 }
 
 window.onload = function() {
-
+  myLoop();
   // If data previously fetched, propagates from local storage.
   chrome.storage.sync.get('classPicked', function(items) {
      if(items['classPicked'] != null) {
@@ -98,7 +99,10 @@ window.onload = function() {
 
   // Gets data from user's search
   var ele = document.getElementById('course-finder');
-  ele.onsubmit = refreshData;
+  ele.onsubmit = function() {
+    refreshData(document.getElementById('search').value);
+    return false;
+  };
 
   var close = document.getElementById('close');
   close.onclick = function() {

@@ -1,22 +1,21 @@
 var i = 1;
-var avail = 0;
+var avail_num = 0;
 var old = 0;
 
 function myLoop () {      
    setTimeout(function () {
-    old = avail;
+    old = avail_num;
     chrome.storage.sync.get('classPicked', function(items) {
      if(items['classPicked'] != null) {
-      console.log(refreshData());
-       avail = refreshData()[0].avail;
+      refreshData(items['classPicked'].code).then((sections) => {
+      	avail_num = sections[0].avail;
+      	if (old <= 0 && avail_num > 0) {           
+      	  console.log("BOOYAH");
+      	} else {
+      	  myLoop(); 
+      	}
+      });
      }
-   });
-      if (old <= 0 && avail > 0) {           
-        console.log("BOOYAH");
-      } else {
-        myLoop(); 
-      }                      
-   }, 3000)
+   });                      
+   }, 3000);
 }
-
-myLoop();
