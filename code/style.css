@@ -157,3 +157,20 @@
 .meeting-info {
   list-style: none;
 }
+
+
+.close {
+    color: #aaa;
+    margin-left: 72%;
+    font-size: 25px;
+    position: absolute;
+    
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-shadow:1px 1px 0px #941e1c;
+    text-decoration: none;
+    cursor: pointer;
+}
