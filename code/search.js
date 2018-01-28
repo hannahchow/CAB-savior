@@ -1,4 +1,16 @@
 function populate(out) {
+
+  var warning = document.getElementById("error");
+
+  if (out.error != null) {
+
+    warning.style.display = "block";
+    warning.children[1].innerHTML = out.error;
+
+  } else {
+
+    warning.style.display = "none";
+
   document.getElementById('sections').innerHTML = "";
   document.getElementById("coursecode").innerHTML = out.code;
 
@@ -42,7 +54,7 @@ function populate(out) {
   });
   // document.getElementById('classcontainer').innerHTML = document.getElementById('classcontainer').innerHTML + '<a href="https://cab.brown.edu/" target="_blank" id="register">REGISTER FOR COURSE</a>';
   document.getElementById("container").style.display = "block";
- 
+ }
 }
 
 window.onload = function() {
