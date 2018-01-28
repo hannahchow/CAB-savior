@@ -80,9 +80,8 @@ function refreshData() {
   .then(res => res.json())
   .then((class_data) => {
     populate(class_data);
+    chrome.storage.sync.set({'classPicked': class_data});
     return class_data.sections;
-    chrome.storage.sync.set({'classPicked': class_data}, function() {
-    });
   })
   .catch(err => { throw err });
   return false;
