@@ -42,7 +42,7 @@
 
   #container {
     width: 300px;
-    height: 350px;
+    height: 360px;
     background-color: #941e1c;
     border-top: 14px solid #691110;
     border-bottom: 14px solid #691110;
@@ -95,7 +95,7 @@
 #classcontainer {
   background-color: white;
   margin: 20px;
-  height: 300px;
+  height: 310px;
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
