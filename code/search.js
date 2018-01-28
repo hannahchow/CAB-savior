@@ -74,20 +74,21 @@ function populate(class_data) {
  }
 }
 
+function refreshData() {
+  var url = "http://10.38.58.25:8080/?course_code=" + document.getElementById('search').value;
+  fetch(url)
+  .then(res => res.json())
+  .then((class_data) => {
+    populate(class_data);
+    return class_data.sections;
+    chrome.storage.sync.set({'classPicked': class_data}, function() {
+    });
+  })
+  .catch(err => { throw err });
+  return false;
+}
+
 window.onload = function() {
-  function refreshData() {
-    var url = "http://10.38.58.25:8080/?course_code=" + document.getElementById('search').value;
-    fetch(url)
-    .then(res => res.json())
-    .then((class_data) => {
-      populate(class_data);
-      return class_data.sections;
-      chrome.storage.sync.set({'classPicked': class_data}, function() {
-      });
-    })
-    .catch(err => { throw err });
-    return false;
-  }
 
   // If data previously fetched, propagates from local storage.
   chrome.storage.sync.get('classPicked', function(items) {
