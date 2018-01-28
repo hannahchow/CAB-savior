@@ -19,6 +19,7 @@ window.onload = function() {
       document.getElementById("classsection").innerHTML = out.sections[0].no;
       document.getElementById("classsize").innerHTML = out.sections[0].capacity;
       document.getElementById("classavail").innerHTML = out.sections[0].avail;
+      document.getElementById("container").style.display = "block";
     })
     .catch(err => { throw err });
     return false;
