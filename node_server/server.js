@@ -97,7 +97,21 @@ var server = http.createServer(function(req, res) {
 				res.setHeader('Access-Control-Allow-Headers', '*');
 				// Success.
 				res.writeHead(200);
+				// Testing stuff
+				// if(code == "clps 0001" || code == "CLPS 0001") {
+				// 	returnData['title'] = "Introduction to Psychoceramics";
+				// 	returnData['code'] = "CLPS 0001";
+				// 	returnData['sections'] = [];
+				// 	returnData['overrideRequired'] = false;
 
+				// 	returnData['sections'][0] = {};
+				// 	returnData['sections'][0]['no'] = "S01";
+				// 	returnData['sections'][0]['capacity'] = "5";
+				// 	returnData['sections'][0]['avail'] = "0";
+				// 	returnData['sections'][0]['meet'] = "<ul class=\"meeting-info\">\n<li>Sa 1pm-2:20pm in <a>List 601</a></li>\n</ul>\n";
+				// 	res.end(JSON.stringify(returnData));
+				// 	return true;
+				// }
 				var parsed = JSON.parse(data);
 				// Checks if API returned error.
 				if(parsed['error'] != null) {
