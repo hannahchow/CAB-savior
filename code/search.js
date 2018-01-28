@@ -100,7 +100,7 @@ window.onload = function() {
 
   var close = document.getElementById('close');
   close.onclick = function() {
-    console.log("hello");
     document.getElementById("container").style.display = "none";
+    chrome.storage.sync.clear();
   }
 }
