@@ -56,6 +56,10 @@ var server = http.createServer(function(req, res) {
 	  			// Searches up to first numeric character.
 	  			if(!isNaN(parseInt(code[i]))) {
   					code = code.substr(0, i) + " " + code.substr(i);
+  					// Converts "cs" to "csci".
+  					if(code.substr(0,i) == "cs") {
+  						code = "csci" + code.substr(2);
+  					}
 	  				break;
 	  			}
 	  		}
