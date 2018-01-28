@@ -109,11 +109,13 @@ window.onload = function() {
   var button = document.getElementById('register');
   var classcontainer = document.getElementById('classcontainer');
   var container = document.getElementById('container');
-  var email = document.getElementById('email-container');
+  var emailcont = document.getElementById('email-container');
   button.onclick = function() {
-    email.style.display = "inline";
+    emailcont.style.display = "inline";
     classcontainer.style.height = "370px";
     container.style.height = "400px";
 
   }
+
+  var email = document.getElementById('email').value;
 }
