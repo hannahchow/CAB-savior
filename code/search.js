@@ -6,7 +6,14 @@ window.onload = function() {
     fetch(url)
     .then(res => res.json())
     .then((out) => {
-      console.log('Checkout this JSON! ', out);
+      // chrome.storage.sync.set({'value': "hello"}, function() {
+      //   console.log("we saved");
+      // });
+      // chrome.storage.sync.clear();
+      // chrome.storage.sync.get('value', function(items) {
+      //   console.log(items);
+      // });
+      // console.log('Checkout this JSON! ', out);
       document.getElementById("coursecode").innerHTML = out.code;
       document.getElementById("classname").innerHTML = out.title;
       document.getElementById("classsize").innerHTML = out.sections[0].capacity;
