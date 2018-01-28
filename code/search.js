@@ -1,3 +1,5 @@
+var old = 1;
+var avail_num = 0;
 /**
  * This function propagates the HTML with appropriate information depending on the user's search.
  */
@@ -83,13 +85,24 @@ function refreshData(code) {
   .then((class_data) => {
     populate(class_data);
     chrome.storage.sync.set({'classPicked': class_data});
-    return class_data.sections;
+    avail_num = class_data.sections[0].avail;
+    chrome.notifications.create(null, {type: "basic",title: "This sux",message: "Not werking", iconUrl: "icon.png"});
+    if (old <= 0 && avail_num > 0) {
+      chrome.notifications.create(null, {type: "basic",title: "LITTY",message: "werking", iconUrl: "icon.png"});
+      chrome.storage.sync.get('email', function(items) {
+    if(items['email'] != null) {
+      var url = "http://10.38.58.25:8080/?email=" + items['email'];
+      fetch(url);
+    }
+      });
+    }
+    old = avail_num;
   })
   .catch(err => { throw err });
 }
 
 window.onload = function() {
-  myLoop();
+  chrome.alarms.create("checker", {periodInMinutes: 1});
   // If data previously fetched, propagates from local storage.
   chrome.storage.sync.get('classPicked', function(items) {
      if(items['classPicked'] != null) {
@@ -100,6 +113,7 @@ window.onload = function() {
   // Gets data from user's search
   var ele = document.getElementById('course-finder');
   ele.onsubmit = function() {
+    old = 1;
     refreshData(document.getElementById('search').value);
     return false;
   };
@@ -120,11 +134,14 @@ window.onload = function() {
     container.style.height = "400px";
 
   }
+  document.getElementById('email-form').onsubmit = function() {
+    chrome.storage.sync.set({'email': document.getElementById('email').value});
+    document.getElementById('email-form').style.display = "none";
+    return false;
+  };
 
-}
-
-function getEmail() {
-   var email = document.getElementById('email').value;
-   return email;
+  chrome.runtime.onMessage.addListener(function(request) {
+    refreshData(request.code);
+  });
 }
 

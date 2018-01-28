@@ -1,21 +1,23 @@
 var i = 1;
-var avail_num = 0;
+var avail_num = 1;
 var old = 0;
-
-function myLoop () {      
-   setTimeout(function () {
-    old = avail_num;
-    chrome.storage.sync.get('classPicked', function(items) {
-     if(items['classPicked'] != null) {
-      refreshData(items['classPicked'].code).then((sections) => {
-      	avail_num = sections[0].avail;
-      	if (old <= 0 && avail_num > 0) {           
-      	  console.log("BOOYAH");
-      	} else {
-      	  myLoop(); 
-      	}
-      });
-     }
-   });                      
-   }, 3000);
-}
+// function myLoop () {
+// 	chrome.notifications.create(null, {type: "basic",title: "LITTY",message: "werking", iconUrl: "icon.png"});
+//    //  old = avail_num;
+//    //  chrome.storage.sync.get('classPicked', function(items) {
+//    //   if(items['classPicked'] != null) {
+//    //    refreshData(items['classPicked'].code);
+//    //   }
+//    // });      
+// }
+chrome.alarms.onAlarm.addListener(function( alarm ) {
+	// refreshData("CSCI 0160");
+	chrome.notifications.create(null, {type: "basic",title: "LITTY",message: "werking", iconUrl: "icon.png"});
+	 old = avail_num;
+	 chrome.storage.sync.get('classPicked', function(items) {
+	  if(items['classPicked'] != null) {
+	   // refreshData(items['classPicked'].code);
+	   chrome.runtime.sendMessage({code: items['classPicked'].code});
+	  }
+	});  
+});
