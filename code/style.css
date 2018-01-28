@@ -99,7 +99,7 @@
 #classcontainer {
   background-color: white;
   margin: 20px;
-  height: 330px;
+  height: 320px;
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
@@ -124,7 +124,7 @@
     display: inline-block;
     width: 160px;
     height: 30px;
-    margin-top: 20px;
+    margin-top: 16px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 10px;
