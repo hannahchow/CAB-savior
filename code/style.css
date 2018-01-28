@@ -146,3 +146,11 @@
   #courseoverride, #container {
     display: none;
   }
+
+.errorcontainer {
+    display: none;
+    text-align: center;
+    padding: 20px 10px;
+    font-size: 20px;
+    color: #691110;
+  }
