@@ -115,13 +115,13 @@
 
 }
 
-#classcontainer > div, #sections > div {
+#classcontainer .separated {
   display: flex;
   padding: 20px 10px;
 
 }
 
-#classcontainer > div:not(:last-child),  #sections > div:not(:last-child){
+#classcontainer .separated:not(:last-child) {
   border-bottom: 2px solid #ccc;
 }
 
@@ -160,10 +160,6 @@
     word-wrap: normal;
   }
 
-  #sections {
-    padding: 0!important;
-    display: block!important;
-  }
 </style>
 
     <!--
@@ -194,14 +190,14 @@
       
 
       <div id="classcontainer">
-        <div>
+        <div class="separated">
         <label>COURSE CODE:</label>
        <!--  <i class="fa fa-exclamation-circle" style="color: white"></i> -->
         <div class="values" id="coursecode"> </div>
         </div>
 
 
-        <div style="display: block;" id="namewrapper">
+        <div style="display: block;" id="namewrapper" class="separated">
         <label>CLASS NAME:</label>
         <div class="values" id="classname"> </div>
         </div>

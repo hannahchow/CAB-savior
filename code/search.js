@@ -15,7 +15,7 @@ function populate(out) {
    classavail = section.avail;
   }
 
-    var html = `<div style="display: block;"> 
+    var html = `<div style="display: block;" class="separated"> 
         <div class="space">
         <label>CLASS SECTION:</label>
         <div class="values">${section.no}</div>
