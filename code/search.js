@@ -1,7 +1,13 @@
 function populate(out) {
   document.getElementById('sections').innerHTML = "";
   document.getElementById("coursecode").innerHTML = out.code;
+
+  if (out.overrideRequired == true){
+    var html = `<i class="fa fa-exclamation-triangle"></i>`;
+    document.getElementById("courseoverride").innerHTML = html + " Instructor override required";
+  }
   document.getElementById("classname").innerHTML = out.title;
+
 
   out.sections.forEach(function(section){
     var classsize = 0;

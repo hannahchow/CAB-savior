@@ -143,3 +143,7 @@
     font-size: 11px;
     word-wrap: normal;
   }
+
+  #courseoverride {
+    display: block;
+  }
