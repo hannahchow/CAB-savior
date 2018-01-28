@@ -13,8 +13,20 @@
   body {
     margin: 10px;
     background-color: #eeece7;
+    overflow-y: scroll;
 
   }
+
+  ::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 4px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, .5);
+  opacity: 0.5;
+  -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+}
 
   h1 {
     font-size: 18px;
@@ -92,26 +104,28 @@
   }
 
 
-.classcontainer {
+#classcontainer {
   background-color: white;
   margin: 20px;
   height: 300px;
   display: flex;
   flex-direction: column;
+  overflow-y: scroll;
+  overflow: scroll;
 
 }
 
-.classcontainer > div {
+#classcontainer > div {
   display: flex;
   padding: 20px 10px;
 
 }
 
-.classcontainer > div:not(:last-child) {
+#classcontainer > div:not(:last-child) {
   border-bottom: 2px solid #ccc;
 }
 
-.classcontainer label {
+#classcontainer label {
   font-weight: bolder;
   padding-right: 4px;
 }
@@ -175,7 +189,7 @@
 
       
 
-      <div class="classcontainer">
+      <div id="classcontainer">
         <div>
         <label>COURSE CODE:</label>
        <!--  <i class="fa fa-exclamation-circle" style="color: white"></i> -->
@@ -183,12 +197,12 @@
         </div>
 
 
-        <div style="display: block;">
+        <div style="display: block;" id="namewrapper">
         <label>CLASS NAME:</label>
         <div class="values" id="classname"> </div>
         </div>
        
-       <div style="display: block;"> 
+      <!-- <div style="display: block;"> 
         <div class="space">
         <label>CLASS SECTION:</label>
         <div class="values" id="classsection"> </div>
@@ -201,12 +215,9 @@
          <label>SEATS AVAILABLE:</label>
         <div class="values" id="classavail"> </div>
       </div>
-      </div>
-        
-       
+      </div> -->
 
-
-       <a href="https://cab.brown.edu/" target="_blank" id="register">REGISTER FOR COURSE</a>
+       <!-- <a href="https://cab.brown.edu/" target="_blank" id="register">REGISTER FOR COURSE</a> -->
 
       </div>
       

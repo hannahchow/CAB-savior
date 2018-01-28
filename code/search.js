@@ -1,18 +1,40 @@
 function populate(out) {
+
   document.getElementById("coursecode").innerHTML = out.code;
   document.getElementById("classname").innerHTML = out.title;
-  document.getElementById("classsection").innerHTML = out.sections[0].no;
 
-  
-  if (out.sections[0].capacity == "") {
-    document.getElementById("classsize").innerHTML = "uncapped";
-    document.getElementById("classavail").innerHTML = "uncapped";
+  out.sections.forEach(function(section){
+    var classsize = 0;
+    var classavail = 0;
+
+    if (section.capacity == "") {
+    classsize = "uncapped";
+    classavail = "uncapped";
   } else {
-    document.getElementById("classsize").innerHTML = out.sections[0].capacity;
-    document.getElementById("classavail").innerHTML = out.sections[0].avail;
+   classsize = section.capacity;
+   classavail = section.avail;
   }
 
+    var html = `<div style="display: block;"> 
+        <div class="space">
+        <label>CLASS SECTION:</label>
+        <div class="values">${section.no}</div>
+      </div>
+      <div>
+        <label>TOTAL CLASS SIZE:</label>
+        <div class="values">${classsize}</div>
+      </div>
+      <div>
+         <label>SEATS AVAILABLE:</label>
+        <div class="values">${classavail}</div>
+      </div>
+      </div>`;
+      document.getElementById('classcontainer').innerHTML = document.getElementById('classcontainer').innerHTML + html;
+
+  });
+  document.getElementById('classcontainer').innerHTML = document.getElementById('classcontainer').innerHTML + '<a href="https://cab.brown.edu/" target="_blank" id="register">REGISTER FOR COURSE</a>';
   document.getElementById("container").style.display = "block";
+ 
 }
 
 window.onload = function() {
