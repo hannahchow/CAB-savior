@@ -16,6 +16,7 @@ window.onload = function() {
       // console.log('Checkout this JSON! ', out);
       document.getElementById("coursecode").innerHTML = out.code;
       document.getElementById("classname").innerHTML = out.title;
+      document.getElementById("classsection").innerHTML = out.sections[0].no;
       document.getElementById("classsize").innerHTML = out.sections[0].capacity;
       document.getElementById("classavail").innerHTML = out.sections[0].avail;
     })
