@@ -18,20 +18,20 @@ function populate(out) {
 window.onload = function() {
 
   var ele = document.getElementById('course-finder');
-  // chrome.storage.sync.get('classPicked', function(items) {
-  //   console.log(items);
-  // });
+  chrome.storage.sync.get('classPicked', function(items) {
+    if(items['classPicked'] != null) {
+      populate(items['classPicked']);
+    }
+  });
   ele.onsubmit = function() {
     var url = "http://10.38.58.25:8080/?course_code=" + document.getElementById('search').value;
     fetch(url)
     .then(res => res.json())
     .then((out) => {
-      // chrome.storage.sync.clear();
-      // console.log('Checkout this JSON! ', out);
       populate(out);
-      // chrome.storage.sync.set({'classPicked': out}, function() {
-      //   console.log("we saved");
-      // });
+      chrome.storage.sync.set({'classPicked': out}, function() {
+        console.log("we saved");
+      });
     })
     .catch(err => { throw err });
     return false;
