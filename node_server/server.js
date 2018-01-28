@@ -16,11 +16,10 @@ function send_email(email_addr) {
 
 	// send the message and get a callback with an error or details of the message that was sent
 	server.send({
-	   text:    "i hope this works", 
+	   text:    "One of your classes has a new opening! Check the chrome extension for details", 
 	   from:    "CAB Savior <cabsavior@gmail.com>", 
 	   to:      email_addr,
-	   cc:      "else <else@your-email.com>",
-	   subject: "testing emailjs"
+	   subject: "A space has has opened up!"
 	}, function(err, message) { console.log(err || message); });
 }
 
