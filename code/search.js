@@ -6,9 +6,15 @@ function populate(out) {
 
     warning.style.display = "block";
     warning.children[1].innerHTML = out.error;
-
+    Array.from(document.getElementsByClassName("separated")).forEach(function(item) {
+      item.style.display = "none";
+    });
+    document.getElementById('register').style.display = "none";
   } else {
-
+    Array.from(document.getElementsByClassName("separated")).forEach(function(item) {
+      item.style.display = "block";
+    });
+    document.getElementById('register').style.display = "block";
     warning.style.display = "none";
 
   document.getElementById('sections').innerHTML = "";
