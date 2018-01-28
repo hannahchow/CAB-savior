@@ -1,5 +1,5 @@
-var old = 1;
-var avail_num = 0;
+// var old = 1;
+// var avail_num = 0;
 /**
  * This function propagates the HTML with appropriate information depending on the user's search.
  */
@@ -85,18 +85,18 @@ function refreshData(code) {
   .then((class_data) => {
     populate(class_data);
     chrome.storage.sync.set({'classPicked': class_data});
-    avail_num = class_data.sections[0].avail;
-    chrome.notifications.create(null, {type: "basic",title: "This sux",message: "Not werking", iconUrl: "icon.png"});
-    if (old <= 0 && avail_num > 0) {
-      chrome.notifications.create(null, {type: "basic",title: "LITTY",message: "werking", iconUrl: "icon.png"});
-      chrome.storage.sync.get('email', function(items) {
-    if(items['email'] != null) {
-      var url = "http://10.38.58.25:8080/?email=" + items['email'];
-      fetch(url);
-    }
-      });
-    }
-    old = avail_num;
+    // avail_num = class_data.sections[0].avail;
+    // // chrome.notifications.create(null, {type: "basic",title: "No success",message: old+" a num "+avail_num, iconUrl: "icon.png"});
+    // if (old <= 0 && avail_num > 0) {
+    //   chrome.notifications.create(null, {type: "basic",title: "Real success",message: "werking", iconUrl: "icon.png"});
+    //   chrome.storage.sync.get('email', function(items) {
+    // if(items['email'] != null) {
+    //   var url = "http://10.38.58.25:8080/?email=" + items['email'];
+    //   fetch(url);
+    // }
+    //   });
+    // }
+    // old = avail_num;
   })
   .catch(err => { throw err });
 }
@@ -113,7 +113,7 @@ window.onload = function() {
   // Gets data from user's search
   var ele = document.getElementById('course-finder');
   ele.onsubmit = function() {
-    old = 1;
+    chrome.runtime.sendMessage({new_course: true});
     refreshData(document.getElementById('search').value);
     return false;
   };
@@ -139,9 +139,5 @@ window.onload = function() {
     document.getElementById('email-form').style.display = "none";
     return false;
   };
-
-  chrome.runtime.onMessage.addListener(function(request) {
-    refreshData(request.code);
-  });
 }
 
