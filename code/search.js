@@ -79,7 +79,7 @@ function populate(class_data) {
 var class_data;
 
 function refreshData(code) {
-  var url = "http://10.38.58.25:8080/?course_code=" + code;
+  var url = "https://cab-savior.herokuapp.com/?course_code=" + code;
   return fetch(url)
   .then(res => res.json())
   .then((class_data) => {

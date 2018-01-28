@@ -7,7 +7,7 @@ function myLoop () {
 		// chrome.notifications.create(null, {type: "basic",title: "LITTY",message: "werking", iconUrl: "icon.png"});
 	   	 chrome.storage.sync.get('classPicked', function(items) {
 	   	  if(items['classPicked'] != null) {
-	   	  	var url = "http://10.38.58.25:8080/?course_code=" + items['classPicked'].code;
+	   	  	var url = "https://cab-savior.herokuapp.com/?course_code=" + items['classPicked'].code;
 	   	   fetch(url)
 	   	     .then(res => res.json())
 	   	     .then((class_data) => {
@@ -18,7 +18,7 @@ function myLoop () {
 	   	         chrome.notifications.create(null, {type: "basic",title: "Spaces available!",message: "A space has opened up in " + class_data.title, iconUrl: "icon.png"});
 	   	         chrome.storage.sync.get('email', function(items) {
 	   	       if(items['email'] != null) {
-	   	         var url = "http://10.38.58.25:8080/?email=" + items['email'];
+	   	         var url = "https://cab-savior.herokuapp.com/?email=" + items['email'];
 	   	         fetch(url);
 	   	       }
 	   	         });
