@@ -50,6 +50,20 @@ var server = http.createServer(function(req, res) {
 	for (const [name, value] of params) {
 	  if(name == "course_code") {
 	  	code = value;
+	  	// Adds a space if one is not inserted (assumes no course code numbers begin with letters).
+	  	if(code.indexOf(" ") == -1) {
+	  		for(var i = 0; i < code.length; i++) {
+	  			// Searches up to first numeric character.
+	  			if(!isNaN(parseInt(code[i]))) {
+  					code = code.substr(0, i) + " " + code.substr(i);
+  					// Converts "cs" to "csci".
+  					if(code.substr(0,i) == "cs") {
+  						code = "csci" + code.substr(2);
+  					}
+	  				break;
+	  			}
+	  		}
+	  	}
 	  } else if(name == "email") {
 	  	email_addr = value;
 	  }
