@@ -115,13 +115,13 @@
 
 }
 
-#classcontainer > div {
+#classcontainer > div, #sections > div {
   display: flex;
   padding: 20px 10px;
 
 }
 
-#classcontainer > div:not(:last-child) {
+#classcontainer > div:not(:last-child),  #sections > div:not(:last-child){
   border-bottom: 2px solid #ccc;
 }
 
@@ -160,6 +160,10 @@
     word-wrap: normal;
   }
 
+  #sections {
+    padding: 0!important;
+    display: block!important;
+  }
 </style>
 
     <!--
@@ -201,24 +205,9 @@
         <label>CLASS NAME:</label>
         <div class="values" id="classname"> </div>
         </div>
-       
-      <!-- <div style="display: block;"> 
-        <div class="space">
-        <label>CLASS SECTION:</label>
-        <div class="values" id="classsection"> </div>
-      </div>
-      <div>
-        <label>TOTAL CLASS SIZE:</label>
-        <div class="values" id="classsize"> </div>
-      </div>
-      <div>
-         <label>SEATS AVAILABLE:</label>
-        <div class="values" id="classavail"> </div>
-      </div>
-      </div> -->
-
-       <!-- <a href="https://cab.brown.edu/" target="_blank" id="register">REGISTER FOR COURSE</a> -->
-
+        <div id="sections">
+        </div>
+        <a href="https://cab.brown.edu/" target="_blank" id="register">REGISTER FOR COURSE</a>
       </div>
       
     </div>

@@ -1,5 +1,5 @@
 function populate(out) {
-
+  document.getElementById('sections').innerHTML = "";
   document.getElementById("coursecode").innerHTML = out.code;
   document.getElementById("classname").innerHTML = out.title;
 
@@ -29,10 +29,10 @@ function populate(out) {
         <div class="values">${classavail}</div>
       </div>
       </div>`;
-      document.getElementById('classcontainer').innerHTML = document.getElementById('classcontainer').innerHTML + html;
+      document.getElementById('sections').innerHTML = document.getElementById('sections').innerHTML + html;
 
   });
-  document.getElementById('classcontainer').innerHTML = document.getElementById('classcontainer').innerHTML + '<a href="https://cab.brown.edu/" target="_blank" id="register">REGISTER FOR COURSE</a>';
+  // document.getElementById('classcontainer').innerHTML = document.getElementById('classcontainer').innerHTML + '<a href="https://cab.brown.edu/" target="_blank" id="register">REGISTER FOR COURSE</a>';
   document.getElementById("container").style.display = "block";
  
 }
