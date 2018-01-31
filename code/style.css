@@ -209,6 +209,7 @@ h1 {
   margin-left: 16px;
   border: 4px solid #941e1c;
   display: none;
+  margin-bottom: 30px;
 }
 
 #email-container input[type=text] {
