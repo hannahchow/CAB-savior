@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
 
-  "name": "Getting started example",
-  "description": "This extension allows the user to change the background color of the current page.",
+  "name": "C@B Savior Chrome Extension (for Brown students!)",
+  "description": "This extension allows you to easily check classes for available seats, time/location, and title without being logged in to the CAB website. You can also subscribe to classes with an email address, and receive email and push notifications when spaces open up in the course.",
   "version": "1.0",
 
   "background": {
