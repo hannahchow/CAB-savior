@@ -112,22 +112,23 @@ window.onload = function() {
 
   // Gets data from user's search
   var ele = document.getElementById('course-finder');
+  var button = document.getElementById('register');
+  var classcontainer = document.getElementById('classcontainer');
+  var container = document.getElementById('container');
+  var emailcont = document.getElementById('email-container');
+
   ele.onsubmit = function() {
     chrome.runtime.sendMessage({new_course: true});
     refreshData(document.getElementById('search').value);
     return false;
   };
 
-  var close = document.getElementById('close');
+  var close = document.getElementById('close-class');
   close.onclick = function() {
-    document.getElementById("container").style.display = "none";
+    container.style.display = "none";
     chrome.storage.sync.clear();
   }
 
-  var button = document.getElementById('register');
-  var classcontainer = document.getElementById('classcontainer');
-  var container = document.getElementById('container');
-  var emailcont = document.getElementById('email-container');
   button.onclick = function() {
     emailcont.style.display = "inline";
     classcontainer.style.height = "370px";
@@ -137,6 +138,7 @@ window.onload = function() {
   document.getElementById('email-form').onsubmit = function() {
     chrome.storage.sync.set({'email': document.getElementById('email').value});
     document.getElementById('email-container').style.display = "none";
+    document.getElementById('email-filled').innerHTML = document.getElementById('email').value + "<span id='email-close'>&times;</span>";
     document.getElementById('register').style.display = "none";
     return false;
   };
