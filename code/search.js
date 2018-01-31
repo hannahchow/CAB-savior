@@ -116,7 +116,7 @@ window.onload = function() {
   var classcontainer = document.getElementById('classcontainer');
   var container = document.getElementById('container');
   var emailcont = document.getElementById('email-container');
-
+  var email_close = document.getElementById('email-close');
   ele.onsubmit = function() {
     chrome.runtime.sendMessage({new_course: true});
     refreshData(document.getElementById('search').value);
@@ -139,6 +139,7 @@ window.onload = function() {
     chrome.storage.sync.set({'email': document.getElementById('email').value});
     document.getElementById('email-container').style.display = "none";
     document.getElementById('email-filled').innerHTML = document.getElementById('email').value + "<span id='email-close'>&times;</span>";
+    email_close.style.display = "inline";
     document.getElementById('register').style.display = "none";
     return false;
   };
