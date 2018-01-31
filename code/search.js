@@ -136,7 +136,8 @@ window.onload = function() {
   }
   document.getElementById('email-form').onsubmit = function() {
     chrome.storage.sync.set({'email': document.getElementById('email').value});
-    document.getElementById('email-form').style.display = "none";
+    document.getElementById('email-container').style.display = "none";
+    document.getElementById('register').style.display = "none";
     return false;
   };
 }
