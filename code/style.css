@@ -150,7 +150,7 @@ h1 {
   word-wrap: normal;
 }
 
-#courseoverride, #container, #email-filled {
+#courseoverride, #container {
   display: none;
 }
 
