@@ -106,7 +106,7 @@ window.onload = function() {
   var emailcont = document.getElementById('email-container');
   var emailclose = document.getElementById('email-close');
   var emailfilled = document.getElementById('email-filled');
-  
+  var emailname = document.getElementById('email-name');
   ele.onsubmit = function() {
     chrome.runtime.sendMessage({new_course: true});
     refreshData(document.getElementById('search').value);
@@ -129,7 +129,7 @@ window.onload = function() {
   document.getElementById('email-form').onsubmit = function() {
     chrome.storage.sync.set({'email': document.getElementById('email').value});
     document.getElementById('email-container').style.display = "none";
-    emailfilled.innerHTML = document.getElementById('email').value + "<span id='email-close'>&times;</span>";
+    emailname.innerHTML = document.getElementById('email').value;
     emailfilled.style.display = "inline";
     return false;
   };
@@ -137,13 +137,14 @@ window.onload = function() {
   document.getElementById('email-close').onclick = function() {
     emailfilled.style.display = "none";
     chrome.storage.sync.set({'email': null});
-    emailfilled.innerHTML = "<span id='email-close'>&times;</span>";
+    emailname.innerHTML = "";
   };
 
+  // Getting prefilled email
   chrome.storage.sync.get('email', function(items) {
      if(items['email'] != null) {
        document.getElementById('email-container').style.display = "none";
-       emailfilled.innerHTML = items['email'] + "<span id='email-close'>&times;</span>";
+       emailname.innerHTML = items['email']
        emailfilled.style.display = "inline";
      }
    });
