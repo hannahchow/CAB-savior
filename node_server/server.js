@@ -6,7 +6,7 @@ var secrets = require("./secrets.js");
 var email_addr = "";
 
 // TODO: Fix this send email function.
-function send_email(email_addr) {
+function send_email(email_addr, title, code) {
 	var server = email.server.connect({
 	   user:    "cabsavior@gmail.com", 
 	   password: secrets.password, 
@@ -16,7 +16,7 @@ function send_email(email_addr) {
 
 	// send the message and get a callback with an error or details of the message that was sent
 	server.send({
-	   text:    "One of your classes has a new opening! Check the chrome extension for details", 
+	   text:    code + ": " + title + " has a new opening! Check the chrome extension for details", 
 	   from:    "CAB Savior <cabsavior@gmail.com>", 
 	   to:      email_addr,
 	   subject: "A space has has opened up!"
@@ -45,6 +45,7 @@ var server = http.createServer(function(req, res) {
 	// Gets parameters from url and checks if there is one for course code.
 	var code = "";
 	var params = new URLSearchParams(req.url.substr(2));
+	var emailSupplied = false;
 	// Iterates to search for course_code.
 	for (const [name, value] of params) {
 	  if(name == "course_code") {
@@ -64,10 +65,7 @@ var server = http.createServer(function(req, res) {
 	  		}
 	  	}
 	  } else if(name == "email") {
-	  	email_addr = value;
-	  	send_email(email_addr);
-	  	res.writeHead(400);
-	  	return true;
+	  	emailSupplied = true;
 	  }
 	}
 
@@ -103,6 +101,12 @@ var server = http.createServer(function(req, res) {
 				if(parsed['error'] != null) {
 					returnData['error'] = "Course not found";
 				} else {
+					if(emailSupplied) {
+						email_addr = value;
+						send_email(email_addr, parsed.course.title, parsed.course.code);
+						res.writeHead(400);
+						return true;
+					}
 					// Adds basic course data to the JSON object.
 					returnData['title'] = parsed.course.title;
 					returnData['code'] = parsed.course.code;

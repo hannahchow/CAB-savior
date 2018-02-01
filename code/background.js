@@ -4,7 +4,6 @@ var old = 1;
 var avail_num = 0;
 function myLoop () {
 	window.setTimeout(function() {
-		// chrome.notifications.create(null, {type: "basic",title: "LITTY",message: "werking", iconUrl: "icon.png"});
 	   	 chrome.storage.sync.get('classPicked', function(items) {
 	   	  if(items['classPicked'] != null) {
 	   	  	var url = "https://cab-savior.herokuapp.com/?course_code=" + items['classPicked'].code;
@@ -13,12 +12,11 @@ function myLoop () {
 	   	     .then((class_data) => {
 	   	       chrome.storage.sync.set({'classPicked': class_data});
 	   	       avail_num = class_data.sections[0].avail;
-	   	       // chrome.notifications.create(null, {type: "basic",title: "No success",message: old+" a num "+avail_num, iconUrl: "icon.png"});
 	   	       if (old <= 0 && avail_num > 0) {
 	   	         chrome.notifications.create(null, {type: "basic",title: "Spaces available!",message: "A space has opened up in " + class_data.title, iconUrl: "icon.png"});
 	   	         chrome.storage.sync.get('email', function(items) {
 	   	       if(items['email'] != null) {
-	   	         var url = "https://cab-savior.herokuapp.com/?email=" + items['email'];
+	   	         var url = "https://cab-savior.herokuapp.com/?email=" + items['email'] + "&course_code=" + items['classPicked'].code;
 	   	         fetch(url);
 	   	       }
 	   	         });
