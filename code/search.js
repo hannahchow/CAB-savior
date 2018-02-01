@@ -135,6 +135,7 @@ window.onload = function() {
 
   emailclose.onclick = function() {
     emailfilled.style.display = "none";
+    chrome.storage.sync.clear();
   };
 
   chrome.storage.sync.get('email', function(items) {
