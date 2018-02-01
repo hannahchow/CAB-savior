@@ -106,6 +106,7 @@ window.onload = function() {
   var emailcont = document.getElementById('email-container');
   var emailclose = document.getElementById('email-close');
   var emailfilled = document.getElementById('email-filled');
+  
   ele.onsubmit = function() {
     chrome.runtime.sendMessage({new_course: true});
     refreshData(document.getElementById('search').value);
@@ -115,7 +116,7 @@ window.onload = function() {
   var close = document.getElementById('close-class');
   close.onclick = function() {
     container.style.display = "none";
-    chrome.storage.sync.clear();
+    chrome.storage.sync.set({'classPicked': null});
   };
 
   button.onclick = function() {
@@ -133,9 +134,10 @@ window.onload = function() {
     return false;
   };
 
-  emailclose.onclick = function() {
+  document.getElementById('email-close').onclick = function() {
     emailfilled.style.display = "none";
     chrome.storage.sync.set({'email': null});
+    emailfilled.innerHTML = "<span id='email-close'>&times;</span>";
   };
 
   chrome.storage.sync.get('email', function(items) {
