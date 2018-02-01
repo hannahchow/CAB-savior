@@ -128,13 +128,13 @@ window.onload = function() {
 
   document.getElementById('email-form').onsubmit = function() {
     chrome.storage.sync.set({'email': document.getElementById('email').value});
-    document.getElementById('email-container').style.display = "none";
+    email_cont.style.display = "none";
     email_name.innerHTML = document.getElementById('email').value;
     email_filled.style.display = "inline";
     return false;
   };
 
-  document.getElementById('email-close').onclick = function() {
+  email_close.onclick = function() {
     email_filled.style.display = "none";
     chrome.storage.sync.set({'email': null});
     email_name.innerHTML = "";
@@ -143,7 +143,7 @@ window.onload = function() {
   // Getting prefilled email
   chrome.storage.sync.get('email', function(items) {
      if(items['email'] != null) {
-       document.getElementById('email-container').style.display = "none";
+       email_cont.style.display = "none";
        email_name.innerHTML = items['email'];
        email_filled.style.display = "inline";
      }
