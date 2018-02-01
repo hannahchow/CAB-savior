@@ -103,10 +103,10 @@ window.onload = function() {
   var button = document.getElementById('register');
   var classcontainer = document.getElementById('classcontainer');
   var container = document.getElementById('container');
-  var emailcont = document.getElementById('email-container');
-  var emailclose = document.getElementById('email-close');
-  var emailfilled = document.getElementById('email-filled');
-  var emailname = document.getElementById('email-name');
+  var email_cont = document.getElementById('email-container');
+  var email_close = document.getElementById('email-close');
+  var email_filled = document.getElementById('email-filled');
+  var email_name = document.getElementById('email-name');
   ele.onsubmit = function() {
     chrome.runtime.sendMessage({new_course: true});
     refreshData(document.getElementById('search').value);
@@ -120,7 +120,7 @@ window.onload = function() {
   };
 
   button.onclick = function() {
-    emailcont.style.display = "inline";
+    email_cont.style.display = "inline";
     classcontainer.style.height = "370px";
     container.style.height = "400px";
 
@@ -129,23 +129,23 @@ window.onload = function() {
   document.getElementById('email-form').onsubmit = function() {
     chrome.storage.sync.set({'email': document.getElementById('email').value});
     document.getElementById('email-container').style.display = "none";
-    emailname.innerHTML = document.getElementById('email').value;
-    emailfilled.style.display = "inline";
+    email_name.innerHTML = document.getElementById('email').value;
+    email_filled.style.display = "inline";
     return false;
   };
 
   document.getElementById('email-close').onclick = function() {
-    emailfilled.style.display = "none";
+    email_filled.style.display = "none";
     chrome.storage.sync.set({'email': null});
-    emailname.innerHTML = "";
+    email_name.innerHTML = "";
   };
 
   // Getting prefilled email
   chrome.storage.sync.get('email', function(items) {
      if(items['email'] != null) {
        document.getElementById('email-container').style.display = "none";
-       emailname.innerHTML = items['email']
-       emailfilled.style.display = "inline";
+       email_name.innerHTML = items['email'];
+       email_filled.style.display = "inline";
      }
    });
 
