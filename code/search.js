@@ -130,7 +130,6 @@ window.onload = function() {
     document.getElementById('email-container').style.display = "none";
     emailfilled.innerHTML = document.getElementById('email').value + "<span id='email-close'>&times;</span>";
     emailfilled.style.display = "inline";
-    document.getElementById('register').style.display = "none";
     return false;
   };
 
@@ -143,7 +142,6 @@ window.onload = function() {
        document.getElementById('email-container').style.display = "none";
        emailfilled.innerHTML = items['email'] + "<span id='email-close'>&times;</span>";
        emailfilled.style.display = "inline";
-       document.getElementById('register').style.display = "none";
      }
    });
 
