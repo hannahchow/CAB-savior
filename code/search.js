@@ -85,18 +85,6 @@ function refreshData(code) {
   .then((class_data) => {
     populate(class_data);
     chrome.storage.sync.set({'classPicked': class_data});
-    // avail_num = class_data.sections[0].avail;
-    // // chrome.notifications.create(null, {type: "basic",title: "No success",message: old+" a num "+avail_num, iconUrl: "icon.png"});
-    // if (old <= 0 && avail_num > 0) {
-    //   chrome.notifications.create(null, {type: "basic",title: "Real success",message: "werking", iconUrl: "icon.png"});
-    //   chrome.storage.sync.get('email', function(items) {
-    // if(items['email'] != null) {
-    //   var url = "http://10.38.58.25:8080/?email=" + items['email'];
-    //   fetch(url);
-    // }
-    //   });
-    // }
-    // old = avail_num;
   })
   .catch(err => { throw err });
 }
@@ -116,7 +104,8 @@ window.onload = function() {
   var classcontainer = document.getElementById('classcontainer');
   var container = document.getElementById('container');
   var emailcont = document.getElementById('email-container');
-  var email_close = document.getElementById('email-close');
+  var emailclose = document.getElementById('email-close');
+  var emailfilled = document.getElementById('email-filled');
   ele.onsubmit = function() {
     chrome.runtime.sendMessage({new_course: true});
     refreshData(document.getElementById('search').value);
@@ -127,23 +116,36 @@ window.onload = function() {
   close.onclick = function() {
     container.style.display = "none";
     chrome.storage.sync.clear();
-  }
+  };
 
   button.onclick = function() {
     emailcont.style.display = "inline";
     classcontainer.style.height = "370px";
     container.style.height = "400px";
 
-  }
+  };
+
   document.getElementById('email-form').onsubmit = function() {
     chrome.storage.sync.set({'email': document.getElementById('email').value});
     document.getElementById('email-container').style.display = "none";
-    document.getElementById('email-filled').innerHTML = document.getElementById('email').value + "<span id='email-close'>&times;</span>";
-    email_close.style.display = "inline";
+    emailfilled.innerHTML = document.getElementById('email').value + "<span id='email-close'>&times;</span>";
+    emailfilled.style.display = "inline";
     document.getElementById('register').style.display = "none";
     return false;
   };
 
-  document.getElementById('')
+  emailclose.onclick = function() {
+    emailfilled.style.display = "none";
+  };
+
+  chrome.storage.sync.get('email', function(items) {
+     if(items['email'] != null) {
+       document.getElementById('email-container').style.display = "none";
+       emailfilled.innerHTML = items['email'] + "<span id='email-close'>&times;</span>";
+       emailfilled.style.display = "inline";
+       document.getElementById('register').style.display = "none";
+     }
+   });
+
 }
 

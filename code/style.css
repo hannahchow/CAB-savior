@@ -150,7 +150,7 @@ h1 {
   word-wrap: normal;
 }
 
-#courseoverride, #container, #email-close {
+#courseoverride, #container, #email-filled {
   display: none;
 }
 
@@ -181,7 +181,7 @@ h1 {
 
 
 
-#close-class, {
+#close-class {
   color: #aaa;
   margin-left: 72%;
   font-size: 25px;
