@@ -181,7 +181,7 @@ h1 {
 
 
 
-#close-class {
+#close-class, {
   color: #aaa;
   margin-left: 72%;
   font-size: 25px;
@@ -198,6 +198,31 @@ h1 {
   cursor: pointer;
   transition: all 0.5s ease;
 }
+
+#email-close {
+  color: #aaa;
+  font-size: 16px;
+}
+
+#email-close:hover,
+#email-close:focus {
+  color: black;
+  text-shadow:1px 1px 0px #941e1c;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+#email-filled {
+  text-align: center;
+  width: 80%;
+  height: auto;
+  padding: 10px;
+  color: #941e1c;
+  border-radius: 10px;
+  border: 3px solid #691110;
+}
+
 
 #email-container {
   width: 86%;
