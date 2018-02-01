@@ -181,7 +181,7 @@ h1 {
 
 
 
-#close-class, {
+#close-class {
   color: #aaa;
   margin-left: 72%;
   font-size: 25px;
@@ -221,6 +221,7 @@ h1 {
   color: #941e1c;
   border-radius: 10px;
   border: 3px solid #691110;
+  display: none;
 }
 
 
