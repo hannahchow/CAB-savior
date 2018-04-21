@@ -1,5 +1,3 @@
-// var old = 1;
-// var avail_num = 0;
 /**
  * This function propagates the HTML with appropriate information depending on the user's search.
  */
@@ -107,6 +105,8 @@ window.onload = function() {
   var email_close = document.getElementById('email-close');
   var email_filled = document.getElementById('email-filled');
   var email_name = document.getElementById('email-name');
+  var email_form = document.getElementById('email-form');
+  
   ele.onsubmit = function() {
     chrome.runtime.sendMessage({new_course: true});
     refreshData(document.getElementById('search').value);
@@ -126,11 +126,14 @@ window.onload = function() {
 
   };
 
-  document.getElementById('email-form').onsubmit = function() {
+  email_form.onsubmit = function() {
     chrome.storage.sync.set({'email': document.getElementById('email').value});
     email_cont.style.display = "none";
     email_name.innerHTML = document.getElementById('email').value;
     email_filled.style.display = "inline";
+    button.style.display = "none";
+    classcontainer.style.height = "320px";
+    container.style.height = "360px";
     return false;
   };
 
@@ -138,6 +141,7 @@ window.onload = function() {
     email_filled.style.display = "none";
     chrome.storage.sync.set({'email': null});
     email_name.innerHTML = "";
+    button.style.display = "block";
   };
 
   // Getting prefilled email
@@ -146,6 +150,7 @@ window.onload = function() {
        email_cont.style.display = "none";
        email_name.innerHTML = items['email'];
        email_filled.style.display = "inline";
+       button.style.display = "none";
      }
    });
 
