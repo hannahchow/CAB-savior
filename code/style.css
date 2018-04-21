@@ -221,22 +221,19 @@ h1 {
   border: 4px solid #941e1c;
   color: #941e1c;
   display: none;
-  margin: auto;
-  margin-bottom: 20px;
+  margin: 0 auto;
+  word-break: break-word;
 }
 
 
 #email-container {
   width: 86%;
-  display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  /*margin-bottom: 12px;*/
-  margin-left: 16px;
+  margin: 0 auto;
   border: 4px solid #941e1c;
   display: none;
-  margin-bottom: 30px;
 }
 
 #email-container input[type=text] {
@@ -245,5 +242,8 @@ h1 {
   font-size: 12px;
   border: none;
   width: 94%;
- 
+}
+
+#email-form {
+  width: 100%;
 }

@@ -6,6 +6,7 @@ function myLoop () {
 	window.setTimeout(function() {
 	   	 chrome.storage.sync.get('classPicked', function(items) {
 	   	  if(items['classPicked'] != null) {
+	   	  	console.log("Looping");
 	   	  	var url = "https://cab-savior.herokuapp.com/?course_code=" + items['classPicked'].code;
 	   	   fetch(url)
 	   	     .then(res => res.json())

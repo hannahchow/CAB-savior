@@ -120,7 +120,7 @@ window.onload = function() {
   };
 
   button.onclick = function() {
-    email_cont.style.display = "inline";
+    email_cont.style.display = "block";
     classcontainer.style.height = "370px";
     container.style.height = "400px";
 
@@ -130,7 +130,7 @@ window.onload = function() {
     chrome.storage.sync.set({'email': document.getElementById('email').value});
     email_cont.style.display = "none";
     email_name.innerHTML = document.getElementById('email').value;
-    email_filled.style.display = "inline";
+    email_filled.style.display = "block";
     button.style.display = "none";
     classcontainer.style.height = "320px";
     container.style.height = "360px";
@@ -149,7 +149,7 @@ window.onload = function() {
      if(items['email'] != null) {
        email_cont.style.display = "none";
        email_name.innerHTML = items['email'];
-       email_filled.style.display = "inline";
+       email_filled.style.display = "block";
        button.style.display = "none";
      }
    });
