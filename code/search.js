@@ -77,7 +77,7 @@ function populate(class_data) {
 var class_data;
 
 function refreshData(code) {
-  var url = "https://cab-savior.herokuapp.com/?course_code=" + code;
+  var url = "http://localhost:8080/?course_code=" + code;
   return fetch(url)
   .then(res => res.json())
   .then((class_data) => {
@@ -107,8 +107,9 @@ window.onload = function() {
   var email_name = document.getElementById('email-name');
   var email_form = document.getElementById('email-form');
   
+  var port = chrome.runtime.connect({name: 'Resets'});
   ele.onsubmit = function() {
-    chrome.runtime.sendMessage({new_course: true});
+    port.postMessage({new_search: true});
     refreshData(document.getElementById('search').value);
     return false;
   };
